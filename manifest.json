@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Linux.do 小助手",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Linux.do 论坛增强工具 - 自动浏览、点赞、用户信息展示、账号等级追踪、积分查看等功能",
   "author": "Linux.do Helper",
   "homepage_url": "https://linux.do",
@@ -45,6 +45,7 @@
         "js/likeCounter.js",
         "js/userInfo.js",
         "js/autoScroll.js",
+        "js/dataModules.js",
         "js/ui.js",
         "js/content.js"
       ],

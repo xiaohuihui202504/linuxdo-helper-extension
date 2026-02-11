@@ -232,7 +232,82 @@ const I18N = {
     noMoreTopics: '没有更多话题可阅读',
     likeLimitReached: '点赞已达上限',
     readLimitReached: '已达到阅读数量限制',
-    autoStopped: '自动停止'
+    autoStopped: '自动停止',
+    // 新增 - 区块标题
+    sectionAutoRead: '自动阅读',
+    sectionAccountInfo: '账号信息',
+    sectionCredit: 'CREDIT 积分',
+    sectionCdk: 'CDK 分数',
+    sectionRanking: '排行榜',
+    sectionPluginSettings: '插件设置',
+    sectionArticleTools: '文章页功能',
+    // 账号信息
+    loadingLevel: '加载中...',
+    trustLevel: '信任等级',
+    meetsRequirements: '已满足要求',
+    notMeetsRequirements: '未满足要求',
+    meetsLevelReq: '已满足 Lv{level} 要求',
+    notMeetsLevelReq: '未满足 Lv{level} 要求',
+    cachedInfo: '缓存',
+    minutesAgo: '分钟前',
+    // 积分
+    userCredits: '的积分',
+    creditAvailable: '可用积分',
+    tomorrowScore: '明日积分',
+    currentPoints: '当前点数',
+    currentRank: '排名',
+    yesterdayPoints: '昨日点数',
+    dailyRemainQuota: '今日剩余额度',
+    totalIncome: '总收入',
+    totalExpense: '总支出',
+    recentIncome: '近7天收入',
+    viewDetails: '查看详情 →',
+    updateTime: '更新',
+    creditLoginRequired: '请先登录 credit.linux.do',
+    // CDK
+    cdkScore: 'CDK 分数',
+    cdkNotAuth: '尚未登录 CDK',
+    cdkAuthTip: '需先完成授权才能查看社区分数',
+    cdkGoLogin: '前往登录',
+    cdkTotalScore: '总分',
+    // 排行榜
+    myRanking: '我的排名',
+    dailyRank: '日榜',
+    weeklyRank: '周榜',
+    monthlyRank: '月榜',
+    quarterlyRank: '季榜',
+    yearlyRank: '年榜',
+    allTimeRank: '总榜',
+    points: '分',
+    // 滑块
+    topicLimit: '获取数量',
+    restTimeLabel: '休息时间',
+    // 当前阅读状态
+    currentReading: '当前阅读',
+    readingLatest: '最新帖子',
+    readingUnread: '未读帖子',
+    // 模式设置
+    modeSettings: '模式设置',
+    // 语言
+    langLabel: '语言 / Language',
+    // 主题
+    themeLabel: '主题配色',
+    themePurple: '紫罗兰',
+    themeBlue: '海洋蓝',
+    themeGreen: '森林绿',
+    themeOrange: '暖阳橙',
+    themePink: '樱花粉',
+    themeDark: '暗夜黑',
+    // CF 5秒盾
+    cfBypassLabel: 'CF 5秒盾',
+    cfBypassDesc: '当 CloudFlare 5秒盾检测失败时，自动跳转到 challenge 页面',
+    cfManualTrigger: '手动触发 CF 验证',
+    // 下载位置
+    downloadLocation: '下载位置',
+    downloadLocationDesc: '保存的文件会下载到浏览器默认下载文件夹',
+    downloadLocationPath: '默认路径: 下载文件夹',
+    downloadLocationTip: '如需更改位置，请在浏览器设置中开启"下载前询问保存位置"',
+    refreshing: '刷新中...'
   },
   en: {
     panelTitle: 'Linux.do Helper',
@@ -279,7 +354,82 @@ const I18N = {
     noMoreTopics: 'No more topics',
     likeLimitReached: 'Like limit reached',
     readLimitReached: 'Read limit reached',
-    autoStopped: 'Auto stopped'
+    autoStopped: 'Auto stopped',
+    // Section titles
+    sectionAutoRead: 'Auto Reading',
+    sectionAccountInfo: 'Account Info',
+    sectionCredit: 'CREDIT Score',
+    sectionCdk: 'CDK Score',
+    sectionRanking: 'Ranking',
+    sectionPluginSettings: 'Plugin Settings',
+    sectionArticleTools: 'Article Tools',
+    // Account info
+    loadingLevel: 'Loading...',
+    trustLevel: 'Trust Level',
+    meetsRequirements: 'Requirements met',
+    notMeetsRequirements: 'Requirements not met',
+    meetsLevelReq: 'Meets Lv{level} requirements',
+    notMeetsLevelReq: 'Does not meet Lv{level} requirements',
+    cachedInfo: 'Cached',
+    minutesAgo: 'min ago',
+    // Credit
+    userCredits: "'s Credits",
+    creditAvailable: 'Available',
+    tomorrowScore: 'Tomorrow Score',
+    currentPoints: 'Current Points',
+    currentRank: 'Rank',
+    yesterdayPoints: 'Yesterday Points',
+    dailyRemainQuota: 'Daily Remaining Quota',
+    totalIncome: 'Total Income',
+    totalExpense: 'Total Expense',
+    recentIncome: 'Last 7 Days Income',
+    viewDetails: 'View Details →',
+    updateTime: 'Updated',
+    creditLoginRequired: 'Please login to credit.linux.do first',
+    // CDK
+    cdkScore: 'CDK Score',
+    cdkNotAuth: 'Not logged in to CDK',
+    cdkAuthTip: 'Please authorize to view community score',
+    cdkGoLogin: 'Go to Login',
+    cdkTotalScore: 'Total Score',
+    // Ranking
+    myRanking: 'My Ranking',
+    dailyRank: 'Daily',
+    weeklyRank: 'Weekly',
+    monthlyRank: 'Monthly',
+    quarterlyRank: 'Quarterly',
+    yearlyRank: 'Yearly',
+    allTimeRank: 'All Time',
+    points: 'pts',
+    // Sliders
+    topicLimit: 'Fetch Count',
+    restTimeLabel: 'Rest Time',
+    // Current reading status
+    currentReading: 'Current',
+    readingLatest: 'Latest Posts',
+    readingUnread: 'Unread Posts',
+    // Mode settings
+    modeSettings: 'Mode Settings',
+    // Language
+    langLabel: 'Language',
+    // Theme
+    themeLabel: 'Theme Color',
+    themePurple: 'Violet',
+    themeBlue: 'Ocean',
+    themeGreen: 'Forest',
+    themeOrange: 'Sunset',
+    themePink: 'Sakura',
+    themeDark: 'Dark',
+    // CF Shield
+    cfBypassLabel: 'CF Shield',
+    cfBypassDesc: 'Auto redirect to challenge page when CloudFlare 5s shield fails',
+    cfManualTrigger: 'Trigger CF Verification',
+    // Download
+    downloadLocation: 'Download Location',
+    downloadLocationDesc: 'Files will be saved to browser default download folder',
+    downloadLocationPath: 'Default: Downloads folder',
+    downloadLocationTip: 'To change, enable "Ask before download" in browser settings',
+    refreshing: 'Refreshing...'
   }
 };
 

@@ -157,8 +157,8 @@
 
 /* 面板内容 */
 .ldh-panel-content {
-  padding: 12px;
-  max-height: 500px;
+  padding: 8px 12px 12px;
+  max-height: 70vh;
   overflow-y: auto;
 }
 
@@ -187,20 +187,77 @@
   font-weight: 500;
 }
 
-/* 区块样式 */
+/* ========== 折叠区块样式 ========== */
 .ldh-section {
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .ldh-section.hidden {
   display: none;
 }
 
+.ldh-section-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ldh-section-header:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.ldh-section-arrow {
+  font-size: 10px;
+  width: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ldh-section-icon {
+  font-size: 14px;
+}
+
+.ldh-section-label {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.ldh-section-body {
+  padding: 8px 4px 4px;
+}
+
+.ldh-section-body.hidden {
+  display: none !important;
+}
+
+/* ========== 区块标题样式 (旧版兼容) ========== */
 .ldh-section-title {
   font-size: 12px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 8px;
+}
+
+/* 子区块标题 */
+.ldh-subsection-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 10px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ldh-subsection-title:first-child {
+  margin-top: 0;
 }
 
 /* 主按钮 */
@@ -258,6 +315,22 @@
 .ldh-btn-secondary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* 微型按钮 */
+.ldh-btn-tiny {
+  padding: 3px 8px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ldh-btn-tiny:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .ldh-button-row {
@@ -379,6 +452,7 @@
   background: rgba(255, 255, 255, 0.3);
   border-radius: 18px;
   transition: all 0.3s;
+  flex-shrink: 0;
 }
 
 .ldh-toggle-slider::before {
@@ -399,6 +473,351 @@
 
 .ldh-toggle-input:checked + .ldh-toggle-slider::before {
   transform: translateX(14px);
+}
+
+/* ========== 滑块样式 ========== */
+.ldh-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.ldh-slider-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ldh-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ldh-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+.ldh-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ldh-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ldh-slider-value {
+  min-width: 28px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7dffb3;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ========== 当前阅读状态 ========== */
+.ldh-reading-status {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.ldh-reading-status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 2px 0;
+}
+
+.ldh-reading-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ldh-reading-mode {
+  color: #7dffb3;
+  font-weight: 600;
+}
+
+/* ========== 数据内容区域 ========== */
+.ldh-data-content {
+  min-height: 30px;
+}
+
+.ldh-loading {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 12px 0;
+}
+
+.ldh-error {
+  text-align: center;
+  font-size: 11px;
+  color: #ffd700;
+  padding: 8px 0;
+}
+
+/* ========== 账号信息区 ========== */
+.ldh-account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.ldh-level-badge {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.ldh-account-status {
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+.ldh-cache-badge {
+  display: inline-block;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+/* 信任等级进度条 */
+.ldh-trust-item {
+  margin: 4px 0;
+}
+
+.ldh-trust-name {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.ldh-trust-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ldh-trust-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ldh-trust-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ffd700, #ffaa00);
+  transition: width 0.5s ease;
+}
+
+.ldh-trust-bar-fill.completed {
+  background: linear-gradient(90deg, #48bb78, #38a169);
+}
+
+.ldh-trust-value {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  min-width: 60px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ldh-trust-summary {
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin: 6px 0 0;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ldh-trust-met {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.ldh-trust-unmet {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========== CREDIT 积分区 ========== */
+.ldh-credit-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.ldh-credit-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ldh-credit-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.ldh-credit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  font-size: 11px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ldh-credit-row:last-child {
+  border-bottom: none;
+}
+
+.ldh-credit-highlight {
+  color: #ffd700;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.ldh-credit-subtitle {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 8px 0 4px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ldh-income-list {
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.ldh-income-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 8px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ldh-credit-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ldh-link {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.ldh-link:hover {
+  opacity: 0.7;
+}
+
+.ldh-update-time {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========== CDK 分数区 ========== */
+.ldh-cdk-empty {
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.ldh-cdk-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.ldh-cdk-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ldh-cdk-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========== 排行榜区 ========== */
+.ldh-rank-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  margin: 2px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.ldh-rank-name {
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ldh-rank-data {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.ldh-rank-score {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.ldh-rank-pos {
+  color: #87ceeb;
+  min-width: 45px;
+  text-align: right;
 }
 
 /* 语言切换 */
@@ -429,26 +848,75 @@
 
 /* 主题选择 */
 .ldh-theme-grid {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
 }
 
 .ldh-theme-btn {
-  width: 32px;
-  height: 32px;
+  padding: 6px 4px;
   border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
+  text-align: center;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ldh-theme-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .ldh-theme-btn.active {
   border-color: white;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.ldh-theme-label {
+  font-size: 9px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+/* ========== 信息提示框 ========== */
+.ldh-info-box {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.ldh-info-box p {
+  margin: 2px 0;
+}
+
+.ldh-info-path {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+.ldh-info-tip {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 9px;
+}
+
+/* ========== CF 5秒盾 ========== */
+.ldh-cf-section {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.ldh-cf-desc {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
 }
 
 /* 滚动条样式 */
@@ -468,13 +936,6 @@
 
 .ldh-panel-content::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
-}
-
-/* 文章工具区 */
-.ldh-article-tools {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* 通用隐藏类 */
@@ -567,4 +1028,18 @@
 .ldh-input-number::-webkit-inner-spin-button,
 .ldh-input-number::-webkit-outer-spin-button {
   opacity: 0.5;
+}
+
+/* 内部滚动条（收入列表等） */
+.ldh-income-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.ldh-income-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ldh-income-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
 }
