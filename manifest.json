@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "Linux.do 小助手",
+  "version": "1.0.0",
+  "description": "Linux.do 论坛增强工具 - 自动浏览、点赞、用户信息展示、账号等级追踪、积分查看等功能",
+  "author": "Linux.do Helper",
+  "homepage_url": "https://linux.do",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://linux.do/*",
+    "https://connect.linux.do/*",
+    "https://credit.linux.do/*",
+    "https://cdk.linux.do/*",
+    "https://idcflare.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Linux.do 小助手"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://linux.do/*",
+        "https://idcflare.com/*"
+      ],
+      "js": [
+        "js/utils.js",
+        "js/storage.js",
+        "js/likeCounter.js",
+        "js/userInfo.js",
+        "js/autoScroll.js",
+        "js/ui.js",
+        "js/content.js"
+      ],
+      "css": [
+        "css/panel.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*", "css/*"],
+      "matches": ["https://linux.do/*", "https://idcflare.com/*"]
+    }
+  ]
+}

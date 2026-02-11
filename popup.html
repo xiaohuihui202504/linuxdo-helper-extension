@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux.do 小助手</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      min-height: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .popup-header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .popup-header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .popup-header .icon {
+      font-size: 24px;
+    }
+
+    .popup-header p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 5px;
+    }
+
+    .popup-content {
+      padding: 15px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .status-item:last-child {
+      border-bottom: none;
+    }
+
+    .status-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .status-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #7dffb3;
+    }
+
+    .status-value.warning {
+      color: #ffd700;
+    }
+
+    .status-value.error {
+      color: #ff6b6b;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+
+    .toggle-label {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 22px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 22px;
+      transition: .3s;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .3s;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #48bb78;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(18px);
+    }
+
+    .footer {
+      padding: 15px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .version {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 5px;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .quick-link {
+      flex: 1;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-size: 11px;
+      transition: background 0.2s;
+    }
+
+    .quick-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .quick-link .link-icon {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-header">
+    <h1>
+      <span class="icon">📚</span>
+      Linux.do 小助手
+    </h1>
+    <p>论坛增强工具</p>
+  </div>
+
+  <div class="popup-content">
+    <!-- 状态区域 -->
+    <div class="section">
+      <div class="section-title">📊 状态</div>
+      <div class="status-item">
+        <span class="status-label">今日阅读</span>
+        <span class="status-value" id="today-read">0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">总阅读</span>
+        <span class="status-value" id="total-read">0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">剩余点赞</span>
+        <span class="status-value" id="like-remaining">--/--</span>
+      </div>
+    </div>
+
+    <!-- 快捷开关 -->
+    <div class="section">
+      <div class="section-title">⚙️ 快捷设置</div>
+      <div class="toggle-row">
+        <span class="toggle-label">👍 自动点赞</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-autolike">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">✨ 清爽模式</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-clean">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">🎨 黑白灰模式</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-grayscale">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 快捷链接 -->
+    <div class="section">
+      <div class="section-title">🔗 快捷链接</div>
+      <div class="quick-links">
+        <a href="https://linux.do" target="_blank" class="quick-link">
+          <span class="link-icon">🏠</span>
+          首页
+        </a>
+        <a href="https://linux.do/unread" target="_blank" class="quick-link">
+          <span class="link-icon">📬</span>
+          未读
+        </a>
+        <a href="https://linux.do/latest" target="_blank" class="quick-link">
+          <span class="link-icon">🆕</span>
+          最新
+        </a>
+        <a href="https://credit.linux.do" target="_blank" class="quick-link">
+          <span class="link-icon">💰</span>
+          积分
+        </a>
+      </div>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="btn-row">
+      <button class="btn btn-primary" id="btn-open-panel">
+        <span>🎛️</span> 打开面板
+      </button>
+      <button class="btn btn-secondary" id="btn-refresh">
+        <span>🔄</span> 刷新
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://linux.do" target="_blank">Linux.do 论坛</a>
+    <div class="version">v1.0.0</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

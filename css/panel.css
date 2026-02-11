@@ -1,0 +1,570 @@
+/**
+ * Linux.do Helper - 面板样式
+ */
+
+/* 全局样式注入 */
+@keyframes ldh-slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes ldh-highlight {
+  0% { background-color: rgba(102, 126, 234, 0.3); }
+  100% { background-color: transparent; }
+}
+
+@keyframes ldh-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 清爽模式 */
+.ldh-clean-mode .sidebar-wrapper,
+.ldh-clean-mode .topic-list-header,
+.ldh-clean-mode .navigation-container,
+.ldh-clean-mode .topic-footer-main-buttons,
+.ldh-clean-mode .post-links-container,
+.ldh-clean-mode .topic-map {
+  display: none !important;
+}
+
+/* 黑白灰模式 */
+.ldh-grayscale-mode {
+  filter: grayscale(100%) !important;
+}
+
+/* 用户信息按钮样式 */
+.ldh-user-info-btn {
+  margin-left: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  vertical-align: middle;
+}
+
+.ldh-user-info-btn:hover {
+  opacity: 1;
+}
+
+/* 用户话题链接样式 */
+.ldh-user-topics-btn {
+  margin-left: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 2px 6px;
+  opacity: 0.7;
+  transition: all 0.2s;
+  vertical-align: middle;
+  display: inline-block;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 4px;
+}
+
+.ldh-user-topics-btn:hover {
+  opacity: 1;
+  background: rgba(102, 126, 234, 0.2);
+}
+
+/* 用户注册信息样式 */
+.ldh-user-reg-info {
+  margin-left: 6px;
+  font-size: 12px;
+  color: #1a4c7c;
+}
+
+/* 主面板样式 */
+.ldh-panel {
+  --ldh-primary: #667eea;
+  --ldh-secondary: #764ba2;
+
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  width: 280px;
+  background: linear-gradient(135deg, var(--ldh-primary) 0%, var(--ldh-secondary) 100%);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.ldh-panel.minimized {
+  width: auto;
+  min-width: 80px;
+}
+
+/* 面板头部 */
+.ldh-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: move;
+  user-select: none;
+}
+
+.ldh-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.ldh-title-icon {
+  font-size: 18px;
+}
+
+.ldh-panel-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.ldh-btn-icon {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.ldh-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 面板内容 */
+.ldh-panel-content {
+  padding: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.ldh-panel-content.hidden {
+  display: none;
+}
+
+/* 最小化状态 */
+.ldh-minimized-content {
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ldh-minimized-content.hidden {
+  display: none;
+}
+
+.ldh-minimized-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.ldh-minimized-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 区块样式 */
+.ldh-section {
+  margin-bottom: 12px;
+}
+
+.ldh-section.hidden {
+  display: none;
+}
+
+.ldh-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
+}
+
+/* 主按钮 */
+.ldh-btn-primary {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  margin-bottom: 10px;
+}
+
+.ldh-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+}
+
+.ldh-btn-primary.running {
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+}
+
+.ldh-btn-primary.running:hover {
+  box-shadow: 0 4px 12px rgba(245, 101, 101, 0.4);
+}
+
+/* 次级按钮 */
+.ldh-btn-secondary {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.ldh-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ldh-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ldh-button-row {
+  display: flex;
+  gap: 8px;
+}
+
+.ldh-button-row .ldh-btn-secondary {
+  flex: 1;
+}
+
+/* 统计容器 */
+.ldh-stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ldh-stat-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 4px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ldh-stat-label {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.ldh-stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7dffb3;
+}
+
+/* 点赞计数器 */
+.ldh-like-counter {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.ldh-like-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.ldh-like-info.ldh-cooldown {
+  color: #ffd700;
+}
+
+.ldh-like-count {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ldh-cooldown-time {
+  font-weight: 600;
+  color: #ff6b6b;
+}
+
+.ldh-like-progress {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ldh-like-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* 开关网格 */
+.ldh-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ldh-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ldh-toggle-row:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ldh-toggle-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ldh-toggle-input {
+  display: none;
+}
+
+.ldh-toggle-slider {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
+  transition: all 0.3s;
+}
+
+.ldh-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  top: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.ldh-toggle-input:checked + .ldh-toggle-slider {
+  background: #48bb78;
+}
+
+.ldh-toggle-input:checked + .ldh-toggle-slider::before {
+  transform: translateX(14px);
+}
+
+/* 语言切换 */
+.ldh-lang-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.ldh-lang-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ldh-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.ldh-lang-btn.active {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+/* 主题选择 */
+.ldh-theme-grid {
+  display: flex;
+  gap: 8px;
+}
+
+.ldh-theme-btn {
+  width: 32px;
+  height: 32px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ldh-theme-btn:hover {
+  transform: scale(1.1);
+}
+
+.ldh-theme-btn.active {
+  border-color: white;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* 滚动条样式 */
+.ldh-panel-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ldh-panel-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.ldh-panel-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.ldh-panel-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* 文章工具区 */
+.ldh-article-tools {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 通用隐藏类 */
+.hidden {
+  display: none !important;
+}
+
+/* 点赞操作按钮行 */
+.ldh-like-actions {
+  margin-bottom: 10px;
+}
+
+/* 同步警告图标 */
+.ldh-sync-warning {
+  cursor: help;
+  font-size: 14px;
+}
+
+/* 点赞过滤区域 */
+.ldh-filter-section {
+  margin-bottom: 10px;
+}
+
+.ldh-filter-options {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.ldh-filter-btn {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.ldh-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.ldh-filter-btn.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: white;
+  font-weight: 600;
+}
+
+/* 输入行 */
+.ldh-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.ldh-input-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ldh-input-number {
+  width: 60px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ldh-input-number:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ldh-input-number::-webkit-inner-spin-button,
+.ldh-input-number::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
