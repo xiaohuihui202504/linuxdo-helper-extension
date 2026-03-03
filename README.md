@@ -298,7 +298,7 @@ git clone https://github.com/xiaohuihui202504/linuxdo-helper-extension.git
 
 欢迎加入技术交流群，分享使用心得和功能建议：
 
-![技术交流群](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260301091713_162_292.jpg)
+![技术交流群](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260303214419_166_292.jpg)
 
 ## 联系作者
 
